@@ -1,0 +1,262 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "fullName": "Virat Kohli",
+      "email": "virat18@zmail.com",
+      "skills": [
+        {
+          "skillName": "Java",
+          "expYears": 2,
+          "proficiency": "intermediate"
+        },
+        {
+          "skillName": "Angular",
+          "expYears": "4",
+          "proficiency": "advanced"
+        },
+        {
+          "skillName": "Django",
+          "expYears": "1",
+          "proficiency": "beginner"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "fullName": "Sachin Tendulkar",
+      "email": "sachin248@kmail.com",
+      "skills": [
+        {
+          "skillName": "Flutter",
+          "expYears": "5",
+          "proficiency": "advanced"
+        },
+        {
+          "skillName": "Java",
+          "expYears": "3",
+          "proficiency": "intermediate"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "fullName": "Rohit Sharma",
+      "email": "rs264@kmail.com",
+      "skills": [
+        {
+          "skillName": "Angular",
+          "expYears": "2",
+          "proficiency": "intermediate"
+        },
+        {
+          "skillName": "Python",
+          "expYears": "1",
+          "proficiency": "beginner"
+        },
+        {
+          "skillName": "Django",
+          "expYears": "2",
+          "proficiency": "advanced"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "fullName": "Ms Dhoni",
+      "email": "msd07@hmail.com",
+      "skills": [
+        {
+          "skillName": "Java",
+          "expYears": "3",
+          "proficiency": "intermediate"
+        },
+        {
+          "skillName": "Flask",
+          "expYears": "2",
+          "proficiency": "beginner"
+        },
+        {
+          "skillName": "Django",
+          "expYears": "3",
+          "proficiency": "intermediate"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "fullName": "Jasprit Bumrah",
+      "email": "jb93@dmail.com",
+      "skills": [
+        {
+          "skillName": "Django",
+          "expYears": "4",
+          "proficiency": "intermediate"
+        },
+        {
+          "skillName": "Java",
+          "expYears": "1",
+          "proficiency": "beginner"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "fullName": "Sourav Ganguly",
+      "email": "sg239@kmail.com",
+      "skills": [
+        {
+          "skillName": "Flutter",
+          "expYears": "2",
+          "proficiency": "beginner"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "fullName": "R Ashwin",
+      "email": "ra401@qmail.com",
+      "skills": [
+        {
+          "skillName": "Ruby",
+          "expYears": "2",
+          "proficiency": "intermediate"
+        },
+        {
+          "skillName": "C++",
+          "expYears": "3",
+          "proficiency": "advanced"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "fullName": "Axar Patel",
+      "email": "ax27@amail.com",
+      "skills": [
+        {
+          "skillName": "Ruby",
+          "expYears": "3",
+          "proficiency": "intermediate"
+        },
+        {
+          "skillName": "Kotlin",
+          "expYears": "2",
+          "proficiency": "intermediate"
+        },
+        {
+          "skillName": "Django",
+          "expYears": "5",
+          "proficiency": "advanced"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "fullName": "Shubman Gill",
+      "email": "sg91@smail.com",
+      "skills": [
+        {
+          "skillName": "Flutter",
+          "expYears": "4",
+          "proficiency": "intermediate"
+        },
+        {
+          "skillName": "Angular",
+          "expYears": "4",
+          "proficiency": "advanced"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "fullName": "Rahul Dravid",
+      "email": "rd270@wmail.com",
+      "skills": [
+        {
+          "skillName": "Java",
+          "expYears": "3",
+          "proficiency": "intermediate"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "fullName": "VVS Laxman",
+      "email": "vvs281@email.com",
+      "skills": [
+        {
+          "skillName": "Java",
+          "expYears": "5",
+          "proficiency": "advanced"
+        },
+        {
+          "skillName": "Angular",
+          "expYears": "3",
+          "proficiency": "intermediate"
+        },
+        {
+          "skillName": "Python",
+          "expYears": "3",
+          "proficiency": "intermediate"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "fullName": "Ravindra Jadeja",
+      "email": "rj66@rmail.com",
+      "skills": [
+        {
+          "skillName": "Flutter",
+          "expYears": "4",
+          "proficiency": "intermediate"
+        },
+        {
+          "skillName": "Angular",
+          "expYears": "3",
+          "proficiency": "advanced"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "fullName": "Prithvi Shaw",
+      "email": "ps227@pmail.com",
+      "skills": [
+        {
+          "skillName": "C#",
+          "expYears": "2",
+          "proficiency": "beginner"
+        },
+        {
+          "skillName": "Angular",
+          "expYears": "1",
+          "proficiency": "beginner"
+        },
+        {
+          "skillName": "Ruby",
+          "expYears": "5",
+          "proficiency": "advanced"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "fullName": "T Natarajan",
+      "email": "tn55@tmail.com",
+      "skills": [
+        {
+          "skillName": "Flutter",
+          "expYears": "5",
+          "proficiency": "advanced"
+        },
+        {
+          "skillName": "Python",
+          "expYears": "3",
+          "proficiency": "intermediate"
+        }
+      ]
+    }
+  ]
+}
