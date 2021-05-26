@@ -1,0 +1,25 @@
+<div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">List of Supervisors</h3>
+    </div>
+  <div class="table-responsive">
+    <table class="table table-bordered" *ngIf="empSups && empSups.length">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th *ngFor="let sup of mSup; let i = index">Tier {{i+1}} Supervisor</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let empSup of empSups">
+        <td>{{ empSup.fullName }}</td>
+        <td *ngFor="let sup of mSup; let i = index">
+            <div *ngIf="i<empSup.supervisors.length">{{empSup.supervisors[i].supName}}</div>
+            <div *ngIf="i>empSup.supervisors.length || i==empSup.supervisors.length">None</div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  

@@ -1,0 +1,15 @@
+<form [formGroup]="scoreForm" (ngSubmit)="start()" class="form-horizontal">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Level Generator</h3>
+    </div>
+<label style="margin-left: 10px; margin-top: 5px" for="score">Enter Your Score</label>
+<br/>
+<input style="margin-left: 10px; margin-top: 5px" type="text" id="score" name="score" formControlName="score">
+<br/>
+<br/>
+    <div class="panel-footer">
+    <button class="btn btn-success" type="submit" [disabled]="scoreForm.invalid">Submit</button>
+    </div>
+  </div>
+</form>

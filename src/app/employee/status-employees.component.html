@@ -1,0 +1,85 @@
+<div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Employee Status</h3>
+    </div>
+  <div class="table-responsive">
+    <table class="table table-bordered" *ngIf="empSups && empSups.length">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th *ngFor="let sup of mSup; let i = index">Tier {{i+1}} Supervisor</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let empSup of empSups">
+        <td>
+          <div style="float:left; padding-right:10px;">{{ empSup.fullName }}</div>
+          <div style="float:left" *ngIf="empSup.status == 1"><span><i class="fas fa-thumbs-up"></i></span></div>
+          <div style="float:left" *ngIf="empSup.status == -1"><span><i class="fas fa-thumbs-down"></i></span></div>
+        </td>
+        <td *ngFor="let sup of mSup; let i = index">
+            <div *ngIf="i<empSup.supervisors.length">
+                <div style="float:left; padding-right:10px;">{{empSup.supervisors[i].supName}}</div>
+                <div style="float:left" *ngIf="empSup.supervisors[i].status == 1"><i class="fas fa-thumbs-up"></i></div>
+                <div style="float:left" *ngIf="empSup.supervisors[i].status == -1"><span><i class="fas fa-thumbs-down"></i></span></div>
+            </div>
+            <div *ngIf="i>empSup.supervisors.length || i==empSup.supervisors.length">None</div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<form [formGroup]="statusForm" (ngSubmit)="OnSubmit()" class="form-horizontal">
+    <label for="empId">Select Employee</label><br/>
+    <select id="empId" formControlName="empId" required>
+        <option *ngFor="let empSup of empSups"  value="{{empSup.id}}">{{empSup.fullName}}</option>
+    </select>
+    <br/>
+    <br/>
+    <label for="score">Enter Score</label><br/>
+    <input type="text" id="score" formControlName="score" required>
+    <br/>
+    <br/>
+    <div>
+        <button class="btn btn-success" type="submit" [disabled]="statusForm.invalid">Submit</button>
+      </div>
+</form>
+<br/>
+<br/>
+
+<div *ngIf="submitted==1">
+    <label>Employee Name</label>
+    <br/>
+    <p>{{empsupp.fullName}}</p>
+    <br/>
+    <label>Employee Score</label>
+    <br/>
+    <p>{{score}}</p>
+    <br/>
+    <br/>
+</div>
+
+<div id ="results" *ngIf="supervisors">
+    <div *ngFor="let sup of supervisors; let i = index">
+          <label>{{sup.supName}} => Tier {{sup.tier}} Supervisor</label>
+          <br/>
+          <div class="btn-toolbar">
+            <button id="Approve" class="btn btn-success" (click)="sendStatus(sup.supId, sup.tier, 1)" [disabled]="flags[i]">Approve</button>
+            <button id="Reject" class="btn btn-danger" (click)="sendStatus(sup.supId, sup.tier, 0)" [disabled]="flags[i]">Reject</button>
+          </div>
+          <br/>
+          <br/>
+    </div>
+</div>
+
+<div id ="results" *ngIf="supervisors.length==0 && submitted==1">
+    <label>No Supervisors</label>
+</div>
+
+
+
+
+
+ 
+  

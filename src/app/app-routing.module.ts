@@ -7,6 +7,9 @@ import {HomeEmployeeComponent} from './employee/home-employee.component';
 import {RulesEmployeeComponent} from './employee/rules-employee.component';
 import {HierarchyEmployeesComponent} from './employee/hierarchy-employees.component';
 import {DynamicHierarchyEmployeesComponent} from './employee/dynamic-hierarchy-employees.component';
+import { ListSupervisorsComponent } from './employee/list-supervisors.component';
+import { ListStatusComponent } from './employee/list-status.component';
+import { StatusEmployeesComponent } from './employee/status-employees.component';
 
 const routes: Routes = [
   {path: 'list', component: ListEmployeesComponent},
@@ -16,7 +19,9 @@ const routes: Routes = [
   {path: 'home', component: HomeEmployeeComponent},
   {path: 'home/:id', component: HomeEmployeeComponent},
   {path: 'rules', component: RulesEmployeeComponent},
-  {path: 'dynamic', component: DynamicHierarchyEmployeesComponent},
+  {path: 'status', component: ListStatusComponent},
+  {path: 'empStatus', component: StatusEmployeesComponent},
+  {path: 'supervisors', component: ListSupervisorsComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
 ];
 

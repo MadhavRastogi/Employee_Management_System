@@ -1,0 +1,304 @@
+<style>
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 15px;
+  }
+</style>
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="form-horizontal">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{pageTitle}}</h3>
+    </div>
+    <div class="panel-body">
+
+      <table border="1px">
+        <tr>
+          <th><label for="fullName">Full Name</label></th>
+          <td><input id="fullName" name="fullName" type="text" formControlName="fullName" required>
+            <div *ngIf="employeeForm.controls.fullName.invalid && (employeeForm.controls.fullName.touched
+              || employeeForm.controls.fullName.dirty)"
+                 class="alert alert-danger">
+              Full Name is required.
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <th><label for="email">Email</label></th>
+          <td><input id="email" name="email" type="text" formControlName="email" required>
+            <div *ngIf="employeeForm.controls.email.invalid && (employeeForm.controls.email.touched
+              || employeeForm.controls.email.dirty)"
+                 class="alert alert-danger">
+              Email is required.
+            </div>
+          </td>
+        </tr>
+      </table>
+      <br/>
+
+
+      <div class="new skill">
+
+
+        <div formArrayName="skills" *ngFor="let skill of getSkills().controls; let i = index">
+          <div [formGroupName]="i">
+            <table border="1px">
+              <tr>
+                <th><label [attr.for]="'skillName' + i">Skill Name</label></th>
+                <td><input type="text" [id]="'skillName' + i " formControlName="skillName" required>
+                  <button *ngIf="getSkills().length>1" (click)="removeSkillButtonClick(i)" type="button" title="Remove Skill" style="margin-left: 25px" class="btn btn-danger btn-sm pull-right">
+                    <span class="glyphicon glyphicon-remove"></span>
+                  </button>
+                </td>
+              </tr>
+
+              <tr>
+                <th><label [attr.for]="'expYears' + i">Experience in Years</label></th>
+                <td><input type="text" [id]="'expYears' + i" formControlName="expYears" required></td>
+              </tr>
+
+              <tr>
+                <th>Proficiency</th>
+                <td ><input type="radio" [id]="'Proficiency' + i" value="beginner" formControlName="proficiency"><span style="padding: 5px">Beginner</span><br/>
+                  <input type="radio" [id]="'Proficiency' + i" value="intermediate" formControlName="proficiency"><span style="padding: 5px">Intermediate</span> <br/>
+                  <input type="radio" [id]="'Proficiency' + i" value="advanced" formControlName="proficiency"><span style="padding: 5px">Advanced</span>
+                </td>
+              </tr>
+            </table>
+            <br/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class=" btn-toolbar col sm-4" style="padding: 15px">
+            <button type="button" class="btn btn-success" (click)="addSkillButtonClick()"> Add Skill</button>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="new supervisor">
+
+
+        <div formArrayName="supervisors" *ngFor="let supervisor of getSupervisors().controls; let i = index">
+          <div [formGroupName]="i">
+            <table border="1px">
+              <tr>
+                <th><label [attr.for]="'supName' + i">Tier {{i+1+':'}} Supervisor Name</label></th>
+                <td><select [id]="'supName' + i " formControlName="supName" required>
+                  <option value="None" selected = "selected">None</option>
+                  <option *ngFor="let employee of employees"  value="{{employee.id + ':' + employee.fullName + ':'}}{{i+1}}{{':'+ 0}}">{{employee.fullName}}</option>
+                </select>
+                  <button *ngIf="getSupervisors().length>1" (click)="removeSupervisorButtonClick(i)" type="button" title="Remove Supervisor" style="margin-left: 25px" class="btn btn-danger btn-sm pull-right">
+                    <span class="glyphicon glyphicon-remove"></span>
+                  </button>
+              </td>
+              </tr>
+            </table>
+            <br/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class=" btn-toolbar col sm-4" style="padding: 15px">
+            <button type="button" class="btn btn-success" (click)="addSupervisorButtonClick()"> Add Supervisor</button>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+    </div>
+
+    <div class="panel-footer">
+      <button class="btn btn-success" type="submit" [disabled]="employeeForm.invalid">Submit</button>
+    </div>
+  </div>
+</form>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">List of Employees</h3>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-bordered" *ngIf="employees && employees.length">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.fullName }}</td>
+        <td>{{ employee.email }}</td>
+        <td class="btn-toolbar">
+          <button class="btn btn-success" (click)="editButtonClick(employee.id)">Edit</button>
+          <button class="btn btn-danger" (click)="deleteButtonClick(employee.id)">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<div>
+
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Bar Chart of Employees</h3>
+  </div>
+  <div style="display: block">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType">
+    </canvas>
+  </div>
+</div>
+
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Horizontal Bar Chart of Employees</h3>
+    </div>
+    <div style="display: block">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [legend]="barChartLegend"
+              [options]="barChartOptions"
+              [chartType]="horizontalBarChartType">
+      </canvas>
+    </div>
+  </div>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Line Chart of Employees</h3>
+    </div>
+    <div style="display: block">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [legend]="barChartLegend"
+              [options]="barChartOptions"
+              [chartType]="lineChartType">
+      </canvas>
+    </div>
+  </div>
+
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Doughnut Chart of Employees</h3>
+  </div>
+  <div style="display: block">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [legend]="barChartLegend"
+            [options]="doughnutChartOptions"
+            [chartType]="doughnutChartType">
+    </canvas>
+  </div>
+<br/>
+<br/>
+<br/>
+<br/>
+  <table style="margin-left: auto; margin-right: auto">
+    <tr>
+      <td *ngFor="let data of barChartData" style="background:{{data.backgroundColor}}">{{data.label}}</td>
+    </tr>
+  </table>
+</div>
+
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Pie Chart of Employees</h3>
+    </div>
+    <div style="display: block">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [legend]="barChartLegend"
+              [options]="doughnutChartOptions"
+              [chartType]="pieChartType">
+      </canvas>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <table style="margin-left: auto; margin-right: auto">
+      <tr>
+        <td *ngFor="let data of barChartData" style="background:{{data.backgroundColor}}">{{data.label}}</td>
+      </tr>
+    </table>
+  </div>
+
+
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Polar Chart of Employees</h3>
+    </div>
+    <div style="display: block">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [legend]="barChartLegend"
+              [options]="barChartOptions"
+              [chartType]="polarChartType">
+      </canvas>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <table style="margin-left: auto; margin-right: auto">
+      <tr>
+        <td *ngFor="let data of barChartData" style="background:{{data.backgroundColor}}">{{data.label}}</td>
+      </tr>
+    </table>
+  </div>
+
+</div>

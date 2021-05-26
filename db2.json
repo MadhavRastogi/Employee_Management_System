@@ -1,0 +1,116 @@
+{
+  "empSups": [
+    {
+      "id": 1,
+      "fullName": "Virat Kohli",
+      "status": 1,
+      "score": "11",
+      "supervisors": []
+    },
+    {
+      "id": 2,
+      "fullName": "Sachin Tendulkar",
+      "status": 1,
+      "score": "32",
+      "supervisors": []
+    },
+    {
+      "id": 3,
+      "fullName": "Rohit Sharma",
+      "status": 1,
+      "score": "11",
+      "supervisors": [
+        {
+          "supId": 1,
+          "supName": "Virat Kohli",
+          "tier": 1,
+          "status": 1
+        },
+        {
+          "supId": 2,
+          "supName": "Sachin Tendulkar",
+          "tier": 2,
+          "status": 1
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "fullName": "Ms Dhoni",
+      "status": -1,
+      "score": "21",
+      "supervisors": [
+        {
+          "supId": 3,
+          "supName": "Rohit Sharma",
+          "tier": 1,
+          "status": 1
+        },
+        {
+          "supId": 2,
+          "supName": "Sachin Tendulkar",
+          "tier": 2,
+          "status": -1
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "fullName": "Shubman Gill",
+      "status": 1,
+      "score": "99",
+      "supervisors": [
+        {
+          "supId": 4,
+          "supName": "Ms Dhoni",
+          "tier": 1,
+          "status": 1
+        },
+        {
+          "supId": 2,
+          "supName": "Sachin Tendulkar",
+          "tier": 2,
+          "status": 1
+        },
+        {
+          "supId": 1,
+          "supName": "Virat Kohli",
+          "tier": 3,
+          "status": 1
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "fullName": "KL Rahul",
+      "status": -1,
+      "score": "36",
+      "supervisors": [
+        {
+          "supId": 2,
+          "supName": "Sachin Tendulkar",
+          "tier": 1,
+          "status": 1
+        },
+        {
+          "supId": 4,
+          "supName": "Ms Dhoni",
+          "tier": 2,
+          "status": 1
+        },
+        {
+          "supId": 3,
+          "supName": "Rohit Sharma",
+          "tier": 3,
+          "status": -1
+        },
+        {
+          "supId": 1,
+          "supName": "Virat Kohli",
+          "tier": 4,
+          "status": 0
+        }
+      ]
+    }
+  ]
+}
